@@ -217,7 +217,7 @@ final class Controller: NSObject, NSMenuDelegate {
         let kept = settings.keptDevices
         var candidates: [String: (name: String, connected: Bool)] = [:]
         for (key, name) in kept {
-            candidates[key] = (name, false)
+            candidates[key] = (name.trimmingCharacters(in: .whitespaces), false)
         }
         for device in AudioDevices.allDevices where AudioDevices.hasOutput(device) {
             let info = AudioDevices.info(device)

@@ -106,7 +106,7 @@ enum AudioDevices {
 
     static func info(_ device: AudioDeviceID) -> OutputInfo {
         OutputInfo(
-            name: string(device, kAudioObjectPropertyName) ?? "Device \(device)",
+            name: string(device, kAudioObjectPropertyName)?.trimmingCharacters(in: .whitespaces) ?? "Device \(device)",
             uid: string(device, kAudioDevicePropertyDeviceUID) ?? "",
             modelUID: string(device, kAudioDevicePropertyModelUID),
             transport: uint32(device, kAudioDevicePropertyTransportType),
